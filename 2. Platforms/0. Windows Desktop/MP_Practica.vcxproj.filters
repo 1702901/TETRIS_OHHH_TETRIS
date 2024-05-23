@@ -40,6 +40,36 @@
     <ClCompile Include="..\..\0. C++ Code\Logic Game\main.cpp">
       <Filter>Logic Game\Source files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\0. C++ Code\Logic Game\ownCode\DiferentsJocs.cpp">
+      <Filter>Logic Game\ownCode</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\0. C++ Code\Logic Game\ownCode\enemigo.cpp">
+      <Filter>Logic Game\ownCode</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\0. C++ Code\Logic Game\ownCode\figura.cpp">
+      <Filter>Logic Game\ownCode</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\0. C++ Code\Logic Game\ownCode\funcionAuxiliars.cpp">
+      <Filter>Logic Game\ownCode</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\0. C++ Code\Logic Game\ownCode\Joc.cpp">
+      <Filter>Logic Game\ownCode</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\0. C++ Code\Logic Game\ownCode\JocTower.cpp">
+      <Filter>Logic Game\ownCode</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\0. C++ Code\Logic Game\ownCode\mago.cpp">
+      <Filter>Logic Game\ownCode</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\0. C++ Code\Logic Game\ownCode\slime.cpp">
+      <Filter>Logic Game\ownCode</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\0. C++ Code\Logic Game\ownCode\Tauler.cpp">
+      <Filter>Logic Game\ownCode</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\0. C++ Code\Logic Game\ownCode\test.cpp">
+      <Filter>Logic Game\ownCode</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\0. C++ Code\Graphic Lib\debug.h">
@@ -93,6 +123,36 @@
     <ClInclude Include="..\..\0. C++ Code\Logic Game\Partida.h">
       <Filter>Logic Game\Header files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\0. C++ Code\Logic Game\ownCode\DiferentsJocs.h">
+      <Filter>Logic Game\ownCode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\0. C++ Code\Logic Game\ownCode\enemigo.h">
+      <Filter>Logic Game\ownCode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\0. C++ Code\Logic Game\ownCode\figura.h">
+      <Filter>Logic Game\ownCode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\0. C++ Code\Logic Game\ownCode\funcionAuxiliar.h">
+      <Filter>Logic Game\ownCode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\0. C++ Code\Logic Game\ownCode\Joc.h">
+      <Filter>Logic Game\ownCode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\0. C++ Code\Logic Game\ownCode\JocTower.h">
+      <Filter>Logic Game\ownCode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\0. C++ Code\Logic Game\ownCode\mago.h">
+      <Filter>Logic Game\ownCode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\0. C++ Code\Logic Game\ownCode\slime.h">
+      <Filter>Logic Game\ownCode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\0. C++ Code\Logic Game\ownCode\struct.h">
+      <Filter>Logic Game\ownCode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\0. C++ Code\Logic Game\ownCode\Tauler.h">
+      <Filter>Logic Game\ownCode</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Logic Game">
@@ -109,6 +169,9 @@
     </Filter>
     <Filter Include="Logic Game\Source files">
       <UniqueIdentifier>{cbe27357-35d7-40c4-ae4b-908075278f4d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Logic Game\ownCode">
+      <UniqueIdentifier>{50262f4e-ca84-4a07-b70b-bef4323001d1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <string>
 #include "InfoJoc.h"
+#include "ownCode/DiferentsJocs.h"
 
 using namespace std;
 
@@ -12,7 +13,7 @@ class Partida
 public:
     Partida();
     
-    void actualitza(double deltaTime);
+    void actualitza();
 private:
     double m_temps;
     // Atributs necessaris només pels exemples d'utilització de la llibreria. 

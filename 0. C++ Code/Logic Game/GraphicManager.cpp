@@ -36,7 +36,7 @@ void GraphicManager::drawSprite (IMAGE_NAME name, float posX, float posY, bool c
     }
     else
     {
-        cout << "Error: no existeix el identificador de image";
+        cout << "\nError: no existeix el identificador de image\n";
     }
     
 }
@@ -93,6 +93,15 @@ string GraphicManager::getImagePath(IMAGE_NAME name){
         break;
     case GRAFIC_QUADRAT_VERD:
         path = "data/Graphics/quadrat_verd.png";
+        break;
+    case GRAFIC_NO_COLOR:
+        path = "data/Graphics/quadrat_no_color.png";
+        break;
+    case GRAFIC_SLIME:
+        path = "data/Graphics/slime.png";
+        break;
+    case GRAFIC_TOWERDEFENSE:
+        path = "data/Graphics/towerTetris.png";
         break;
     default:
         path = "";

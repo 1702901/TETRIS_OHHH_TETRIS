@@ -16,7 +16,7 @@ Partida::Partida()
     m_columna = 5;
 }
 
-void Partida::actualitza(double deltaTime)
+void Partida::actualitza()
 {
     //TODO 1: Interactuar amb la crida per dibuixar gràfics (sprites).
     // 	      Dibuixar a pantalla el fons i el gràfic amb el tauler buit.
@@ -29,7 +29,7 @@ void Partida::actualitza(double deltaTime)
     //          (GRAFIC_TAULER, POS_X_TAULER, POS_Y_TAULER, false)
 
 
-
+    tetris();
     
 
     //TODO 1.3: Dibuixar a pantalla el gràfic amb el tauler i un quadrat groc a la posició (2,3) del tauler
