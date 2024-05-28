@@ -44,6 +44,10 @@ void mostraTauler(Joc& jocAMostrar, Screen& pantalla)
 			
 		}
 	}
+	//poner fila columna en la pantalla
+	int puntos = jocAMostrar.getPuntosPartida();
+	string msg = "Puntos: " + to_string(puntos);
+	GraphicManager::getInstance()->drawFont(FONT_RED_30, 100, POS_Y_TAULER - 50, 1.0, msg);
 	pantalla.update();
 
 }
@@ -137,7 +141,7 @@ void tetris()
 		mostraTauler(tetris, pantalla);
 		// despres de esperar les tecles baixa la figura
 		// comprueba que no se ha perdido la partida
-		
+
 
 		// Actualitza la pantalla
 

@@ -5,6 +5,7 @@
 #include <string>
 #include "InfoJoc.h"
 #include "ownCode/DiferentsJocs.h"
+#include "ownCode/modeTest.h"
 
 using namespace std;
 
@@ -18,6 +19,7 @@ private:
     double m_temps;
     // Atributs necessaris només pels exemples d'utilització de la llibreria. 
     // S'hauran d'eliminar per la implementació del projecte
+    void inicialitza(int mode);
     static const int MIDA = 4;
     ColorFigura m_forma[MIDA][MIDA];
     int m_fila, m_columna;

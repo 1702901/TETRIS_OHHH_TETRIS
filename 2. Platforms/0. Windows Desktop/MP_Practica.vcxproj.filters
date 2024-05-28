@@ -70,6 +70,12 @@
     <ClCompile Include="..\..\0. C++ Code\Logic Game\ownCode\test.cpp">
       <Filter>Logic Game\ownCode</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\0. C++ Code\Logic Game\ownCode\modeTest.cpp">
+      <Filter>Logic Game\ownCode</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\0. C++ Code\Logic Game\ownCode\testLlista.cpp">
+      <Filter>Logic Game\ownCode</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\0. C++ Code\Graphic Lib\debug.h">
@@ -151,6 +157,18 @@
       <Filter>Logic Game\ownCode</Filter>
     </ClInclude>
     <ClInclude Include="..\..\0. C++ Code\Logic Game\ownCode\Tauler.h">
+      <Filter>Logic Game\ownCode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\0. C++ Code\Logic Game\ownCode\modeTest.h">
+      <Filter>Logic Game\ownCode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\0. C++ Code\Logic Game\ownCode\node.h">
+      <Filter>Logic Game\ownCode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\0. C++ Code\Logic Game\ownCode\testLlista.h">
+      <Filter>Logic Game\ownCode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\0. C++ Code\Logic Game\ownCode\testFigura.h">
       <Filter>Logic Game\ownCode</Filter>
     </ClInclude>
   </ItemGroup>

@@ -87,3 +87,44 @@ void Partida::actualitza()
 
 }
 
+void Partida::inicialitza(int mode) 
+{
+    string fitxerInicial, fitxerFigures, fitxerMoviments;
+
+    switch (mode)
+    {
+    case 1:
+        cout << "Introdueix el fitxer inicial: ";
+        cin >> fitxerInicial, cout<<endl;
+        cout << "Introdueix el fitxer Figures: ";
+        cin >> fitxerFigures, cout << endl;
+        cout << "Introdueix el fitxer Moviments: ";
+        cin >> fitxerMoviments, cout << endl;
+
+        modeTest(fitxerInicial, fitxerFigures, fitxerMoviments);
+
+        break;
+    case 2:
+        tetris();
+        break;
+    case 3:
+        towerTetris();
+        break;
+    case 4:
+        cout << "Saliendo" << endl;
+        break;
+    default:
+        cout << "Introduce una opción valida" << endl;
+        break;
+    }
+}
+
+
+
+void menu()
+{
+    cout << "1. Mode Test" << endl;
+    cout << "2. Mode Normal" << endl;
+    cout << "3. Exit" << endl;
+}
+

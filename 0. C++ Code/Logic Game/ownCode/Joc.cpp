@@ -14,6 +14,7 @@ Joc::Joc()
 	m_time = 0;
 	posarFigura();
 	fiPartida = false;
+	puntosPartida = 0;
 }
 // regenera la figura amb les mateixe coordenades x pero posa la y = 0 per possarla assobre
 void Joc::novaFigura()
@@ -101,6 +102,7 @@ void Joc::inicialitza(const string& nomFitxer)
 }
 
 
+
 void Joc::mostrarTualer()
 {
 	cout << m_tauler;
@@ -152,19 +154,30 @@ bool Joc::mirarSiHaColisionsFigura()
 			
             else
             {
-				if (colorDeLaPos != COLOR_NEGRE && m_tauler.getPosition(columna, fila) != COLOR_NEGRE)
+				if ((columna < 0 || fila < 0) && colorDeLaPos != COLOR_NEGRE)
+				{
 					colisio = true;
+					
+				}
             	else
             	{
-            		if ( (columna < 0 || fila < 0) && colorDeLaPos != COLOR_NEGRE)
-            			colisio = true;
+					if (colorDeLaPos != COLOR_NEGRE && m_tauler.getPosition(columna, fila) != COLOR_NEGRE)
+					{
+						colisio = true;
+					}
+
             	}
             }
+			//miramos que no sea los marcos del tauler o que sea la ultima fila
+			if ((colisio) && (columna>=FILESTAULER || (colorDeLaPos!=COLOR_NEGRE && fila<=COLUMNESATAULER-1 && fila > 0))) {
+				puntosPartida += 10;
+			}
 			columna++;
 		}
 		fila++;
 		columna = m_figura.getY();
 	}
+	
 	return colisio;
 }
 
@@ -250,6 +263,8 @@ int Joc::eliminarLineasCompletesBaixada()
 			filesEliminades++;
 		}
 	}
+	punts(filesEliminades);
+
 	return filesEliminades;
 }
 
@@ -320,4 +335,35 @@ void Joc::escriuTauler(const string& nomFitxer)
 void Joc::inicialitzaFigura(const int tipusFiguraNova)
 {
 	m_figura.cambiaFigura(tipusFiguraNova);
+}
+
+void Joc::getFiguraPosActual(int &fila, int &columna) {
+	fila = m_figura.getX();
+	columna = m_figura.getY();
+}
+
+void Joc::punts(int nFilesEliminades)
+{
+	int puntos = 0;
+	if (nFilesEliminades != 0) {
+		switch (nFilesEliminades)
+		{
+		case 1:
+			puntos = 100;
+			break;
+
+		case 2:
+			puntos = 150;
+			break;
+
+		case 3:
+			puntos = 175;
+			break;
+		default:
+			puntos = 200;
+			break;
+		}
+	}
+
+	puntosPartida += puntos;
 }

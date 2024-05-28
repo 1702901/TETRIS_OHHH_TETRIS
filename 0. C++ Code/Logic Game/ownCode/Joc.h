@@ -9,6 +9,7 @@ private:
 	Figuras m_figura;
 	bool fiPartida;
 	double m_time;
+	int puntosPartida;
 public:
 	Joc();
 	void novaFigura();
@@ -27,6 +28,11 @@ public:
 	bool getFiPartida()  const { return fiPartida; };
 	int getValuePos(int posX, int posY) const { return m_tauler.getPosition(posX, posY); }
 	int hardDrop();
+
+	//funciones para la pantalla y etc
+	void getFiguraPosActual(int& fila, int& columna);
+	void punts(int nFilesEliminades);
+	int getPuntosPartida()const { return puntosPartida; };
 };
 
 #endif
