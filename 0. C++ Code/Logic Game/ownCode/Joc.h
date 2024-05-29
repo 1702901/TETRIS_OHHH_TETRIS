@@ -9,6 +9,8 @@ private:
 	Figuras m_figura;
 	bool fiPartida;
 	double m_time;
+	int m_puntsPartida;
+	double m_timeDown;
 public:
 	Joc();
 	void novaFigura();
@@ -26,7 +28,10 @@ public:
 	void inicialitzaFigura(const int tipusFiguraNova);
 	bool getFiPartida()  const { return fiPartida; };
 	int getValuePos(int posX, int posY) const { return m_tauler.getPosition(posX, posY); }
+	void punts(const int nFilesEliminades);
 	int hardDrop();
+	double getTimeDown() const { return m_timeDown; };
+	int getPuntuacio() const { return m_puntsPartida; };
 };
 
 #endif

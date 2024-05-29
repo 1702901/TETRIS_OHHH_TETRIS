@@ -14,6 +14,8 @@ Joc::Joc()
 	m_time = 0;
 	posarFigura();
 	fiPartida = false;
+	m_puntsPartida = 0;
+	m_timeDown = 1;
 }
 // regenera la figura amb les mateixe coordenades x pero posa la y = 0 per possarla assobre
 void Joc::novaFigura()
@@ -250,9 +252,35 @@ int Joc::eliminarLineasCompletesBaixada()
 			filesEliminades++;
 		}
 	}
+	punts(filesEliminades);
 	return filesEliminades;
 }
 
+void Joc::punts(const int nFilesEliminades)
+{
+	int puntos = 10;
+	if (nFilesEliminades != 0) {
+		switch (nFilesEliminades)
+		{
+		case 1:
+			puntos = 100;
+			break;
+
+		case 2:
+			puntos = 150;
+			break;
+
+		case 3:
+			puntos = 175;
+			break;
+		default:
+			puntos = 200;
+			break;
+		}
+	}
+	m_puntsPartida += puntos;
+	m_timeDown = double( - (m_puntsPartida / 1000) + 20 ) / 20;
+}
 
 int Joc::baixaFigura()
 {

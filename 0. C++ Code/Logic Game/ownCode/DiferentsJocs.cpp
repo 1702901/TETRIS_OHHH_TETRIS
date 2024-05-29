@@ -28,8 +28,7 @@
 
 #include "../GraphicManager.h"
 
-void mostraTauler(Joc& jocAMostrar, Screen& pantalla)
-{
+void mostraTauler(Joc& jocAMostrar, Screen& pantalla){
 	GraphicManager::getInstance()->drawSprite(GRAFIC_FONS, 0, 0, false);
 	GraphicManager::getInstance()->drawSprite(GRAFIC_TAULER, POS_X_TAULER, POS_Y_TAULER, false);
 	for (int fila = 0; fila < FILESTAULER; fila++)
@@ -44,8 +43,9 @@ void mostraTauler(Joc& jocAMostrar, Screen& pantalla)
 			
 		}
 	}
+	string msg = "Puntuacio: " + to_string(jocAMostrar.getPuntuacio()) + ", Nivell: " + to_string(jocAMostrar.getPuntuacio()/1000+1);
+	GraphicManager::getInstance()->drawFont(FONT_WHITE_30, POS_X_TAULER, POS_Y_TAULER - 50, 1.0, msg);
 	pantalla.update();
-
 }
 
 
@@ -89,7 +89,6 @@ void tetris()
 	tetris.mostrarTualer();
 	NOW = SDL_GetPerformanceCounter();
 	LAST = NOW;
-	double timeToGoDown = 1;
 	deltaTime = (double)((NOW - LAST) / (double)SDL_GetPerformanceFrequency());
 	while(!Keyboard_GetKeyTrg(KEYBOARD_ESCAPE) && !tetris.getFiPartida())
 	{
@@ -97,7 +96,7 @@ void tetris()
 
 		// Captura tots els events de ratolí i teclat de l'ultim cicle
 
-		while (deltaTime < timeToGoDown && !Keyboard_GetKeyTrg(KEYBOARD_ESCAPE))
+		while (deltaTime < tetris.getTimeDown() && !Keyboard_GetKeyTrg(KEYBOARD_ESCAPE))
 		{
 			pantalla.processEvents();
 				// aqui se guarda el valor pulsado 
