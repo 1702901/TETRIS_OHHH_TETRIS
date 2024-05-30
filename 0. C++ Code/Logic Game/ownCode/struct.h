@@ -63,4 +63,16 @@ typedef enum
     GIR_ANTI_HORARI
 } DireccioGir;
 
+//modo test
+typedef enum
+{
+    MOVIMENT_ESQUERRA = 0,
+    MOVIMENT_DRETA = 1,
+    MOVIMENT_GIR_HORARI = 2,
+    MOVIMENT_GIR_ANTI_HORARI = 3,
+    MOVIMENT_BAIXA = 4,
+    MOVIMENT_BAIXA_FINAL = 5,
+} TipusMoviment;
+
+
 #endif

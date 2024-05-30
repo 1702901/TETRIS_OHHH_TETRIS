@@ -1,7 +1,7 @@
 #include "figura.h"
-//#include "test.h"
+#include "test.h"
 #include "Joc.h"
-
+#include "modeTest.h"
 void mostrarCreacioFigures()
 {
     //mostra com es generen correctement totes les figures 
@@ -219,6 +219,15 @@ void mouFigura(const string& nomFitxerLlegir)
     nouJocTetris.mostrarTualer();
     cout << endl;
 }
+
+
+void ferLlegirFiguraTest(const string& fitxer){
+    ModoTest testFigura;
+    testFigura.llegirFitxerFigures(fitxer);
+    TextInfo infoModotest = testFigura.getInfoMod();
+    infoModotest.mostraFiguraInfo();
+}
+
 /*
 int main()
 {

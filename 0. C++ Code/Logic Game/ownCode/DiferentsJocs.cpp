@@ -1,6 +1,7 @@
 #include "DiferentsJocs.h"
 #include "JocTower.h"
 
+
 #if defined(WIN32) || defined(_WIN32) || defined(__WIN32__) || defined(__NT__) || defined  (_WIN64)
 
 #include <iostream>
@@ -25,7 +26,6 @@
 
 #include "../Partida.h"
 #include "../InfoJoc.h"
-
 #include "../GraphicManager.h"
 
 void mostraTauler(Joc& jocAMostrar, Screen& pantalla)
@@ -144,6 +144,7 @@ void tetris()
 
 
 		// Actualitza la pantalla
+		tetris.mostrarTualer();
 
 	}
 	// Sortim del bucle si pressionem ESC
@@ -181,7 +182,6 @@ void towerTetris()
 		deltaTime = (double)((NOW - LAST) / (double)SDL_GetPerformanceFrequency());
 		while (!Keyboard_GetKeyTrg(KEYBOARD_ESCAPE) && !tetrisTowerDefense.getFiPartida())
 		{
-
 
 			// Captura tots els events de ratolí i teclat de l'ultim cicle
 
@@ -242,3 +242,84 @@ void towerTetris()
 
 		}
 	}
+
+
+void modoTest(const string &fitxerInicial, const string &fitxerFigura, const string &fitxerMoviments)
+{
+
+	//Instruccions necesaries per poder incloure la llibreria i que trobi el main
+	SDL_SetMainReady();
+	SDL_Init(SDL_INIT_VIDEO);
+
+	//Inicialitza un objecte de la classe Screen que s'utilitza per gestionar la finestra grafica
+	Screen pantalla(SCREEN_SIZE_X, SCREEN_SIZE_Y);
+	//Mostrem la finestra grafica
+	pantalla.show();
+
+	Partida game;
+	Uint64 NOW = SDL_GetPerformanceCounter();
+	Uint64 LAST = 0;
+	double deltaTime = 0;
+
+	ModoTest modoTest;
+	Joc test = modoTest.getJoc();
+	TextInfo modoTestInfo = modoTest.getInfoMod();
+	//prepara el modo test
+	modoTest.inicialitzaTabler(fitxerInicial);
+	modoTest.llegirFitxerFigures(fitxerFigura);
+	modoTest.llegirFitxerMoviments(fitxerMoviments);
+
+	test.mostrarTualer();
+	bool fiDePartida = false;
+
+	NOW = SDL_GetPerformanceCounter();
+	LAST = NOW;
+	double timeToGoDown = 1;
+	deltaTime = (double)((NOW - LAST) / (double)SDL_GetPerformanceFrequency());
+	while (!Keyboard_GetKeyTrg(KEYBOARD_ESCAPE) && !fiDePartida)
+	{
+
+		// Captura tots els events de ratolí i teclat de l'ultim cicle
+
+		while (deltaTime < timeToGoDown && !Keyboard_GetKeyTrg(KEYBOARD_ESCAPE))
+		{
+			pantalla.processEvents();
+			int opcion = modoTestInfo.getMoviment()->getValor();
+			switch (opcion)
+			{ 
+				case MOVIMENT_ESQUERRA:
+					test.mouFigura(-1);
+					mostraTauler(test, pantalla);
+					break;
+				case MOVIMENT_DRETA:
+					test.mouFigura(+1);
+					mostraTauler(test, pantalla);
+					break;
+				case MOVIMENT_GIR_HORARI:
+					
+					break;
+				case MOVIMENT_GIR_ANTI_HORARI:
+					break;
+				case MOVIMENT_BAIXA:
+					break;
+				case MOVIMENT_BAIXA_FINAL:
+					break;
+				default:
+					cout << "No existeix cap opció" << endl;
+					break;
+			}
+			
+			NOW = SDL_GetPerformanceCounter();
+			deltaTime = (double)((NOW - LAST) / (double)SDL_GetPerformanceFrequency());
+		}
+		LAST = NOW;
+		deltaTime = (double)((NOW - LAST) / (double)SDL_GetPerformanceFrequency());
+		mostraTauler(test, pantalla);
+		// despres de esperar les tecles baixa la figura
+		// comprueba que no se ha perdido la partida
+
+
+		// Actualitza la pantalla
+
+	}
+	

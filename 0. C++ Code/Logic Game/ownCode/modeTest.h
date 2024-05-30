@@ -1,18 +1,22 @@
 #pragma once
-#include<iostream>
-#include<string>
+
 #include "Joc.h"
 #include "struct.h"
 #include "testLlista.h"
 using namespace std;
 
-void modeTest(const string& fitxerInicial, const string& fitxerFigures, const string& fitxerMoviments);
 
 class ModoTest {
 public:
-	void llegirFitxerFigures(const string& nomFitxer, NodeFigura* nodeFigura);
+	ModoTest() { ; };
+	void inicialitzaTabler(const string& fitxerInicial);
+	void llegirFitxerFigures(const string& nomFitxer);
+	void llegirFitxerMoviments(const string& nomFitxer);
+	TextInfo getInfoMod() const { return m_infoModTest; };
+	Joc getJoc() const { return m_gameModoTest; };
 
 private:
 	//puede guardar figura y moviments
-	TextInfo m_modTest;
+	Joc m_gameModoTest;
+	TextInfo m_infoModTest;
 };

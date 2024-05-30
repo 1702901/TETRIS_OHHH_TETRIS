@@ -1,4 +1,6 @@
 ﻿#include "testLlista.h"
+#include <iostream>
+using namespace std;
 
 void TextInfo::afegeixMoviment(const int& moviment)
 {
@@ -8,14 +10,39 @@ void TextInfo::afegeixMoviment(const int& moviment)
 	m_moviments = aux;
 	m_nMoviments++;
 }
-void TextInfo::afegeixFigura(const int& figura,const int& y, const int& x, const int& nGirsH)
+
+
+void TextInfo::afegeixFigura(const int& figura, const int& y, const int& x, const int& nGirsH)
 {
 	NodeFigura* aux = new NodeFigura;
-	aux->setValor(figura,y,x,nGirsH);
+	aux->setValor(figura, y, x, nGirsH);
 	aux->setNext(m_figuras);
 	m_figuras = aux;
 	m_nFiguras++;
 }
+
+Node* TextInfo::ultiMoviment() const
+{
+	Node* ultim = new Node;
+	ultim = m_moviments;
+	while (ultim->getNext() != nullptr)
+	{
+		ultim = ultim->getNext();
+	}
+	return ultim;
+}
+
+NodeFigura* TextInfo::ultimaFigura() const
+{
+	NodeFigura* ultim = new NodeFigura;
+	ultim = m_figuras;
+	while (ultim->getNext() != nullptr)
+	{
+		ultim = ultim->getNext();
+	}
+	return ultim;
+}
+
 void TextInfo::eliminaFirstMoviment()
 {
 	//miramos que no este vacio
@@ -51,3 +78,54 @@ void TextInfo::eliminaFirstFigura()
 		delete aux;
 	}
 }
+
+void TextInfo::mostraFiguraInfo() const
+{
+	NodeFigura* iterador = new NodeFigura;
+	iterador = m_figuras;
+	
+	while (iterador != nullptr)
+	{
+		FiguraTest figura = iterador->getValor();
+		cout << figura.getTipusFigura() << " " << figura.getPosY() << " " << figura.getPosX() << " " << figura.getNGirsHoraris() << endl;
+		iterador = iterador->getNext();
+	}
+}
+
+
+void TextInfo::invertirFigura()
+{
+	NodeFigura* previo = nullptr, * actual = m_figuras, * next = nullptr;
+
+	while (actual != nullptr)
+	{
+		//guarda el next nodo
+		next = actual->getNext();
+		// giramos la dirección
+		actual->setNext(previo);
+		// movemos los iterados en un nodo previo -> actual y actual -> siguiente
+		previo = actual;
+		actual = next;
+	}
+	//para guarda el nuevo primero de la cola
+	m_figuras = previo;
+}
+
+void TextInfo::invertirMoviment()
+{
+	Node* previo = nullptr, * actual = m_moviments, * next = nullptr;
+
+	while (actual != nullptr)
+	{
+		//guarda el next nodo
+		next = actual->getNext();
+		// giramos la dirección
+		actual->setNext(previo);
+		// movemos los iterados en un nodo previo -> actual y actual -> siguiente
+		previo = actual;
+		actual = next;
+	}
+	//para guarda el nuevo primero de la cola
+	m_moviments = previo;
+}
+

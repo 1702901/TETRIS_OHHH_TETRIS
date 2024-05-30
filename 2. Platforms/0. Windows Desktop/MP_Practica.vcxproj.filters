@@ -171,6 +171,9 @@
     <ClInclude Include="..\..\0. C++ Code\Logic Game\ownCode\testFigura.h">
       <Filter>Logic Game\ownCode</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\0. C++ Code\Logic Game\ownCode\test.h">
+      <Filter>Logic Game\ownCode</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Logic Game">

@@ -9,6 +9,10 @@ public:
 	void inicializar(const int& tipusFigura, const int& y, const int& x, const int& nGirsHoraris) {
 		m_tipusFigura = tipusFigura, m_posY = y, m_posX = x,m_nGirsHoraris = nGirsHoraris;
 	};
+	int getTipusFigura() const { return m_tipusFigura; }
+	int getPosY() const { return m_posY; }
+	int getPosX() const { return m_posX; }
+	int getNGirsHoraris() const { return m_nGirsHoraris; }
 
 
 private:

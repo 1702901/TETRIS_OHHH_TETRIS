@@ -202,6 +202,7 @@
     <ClInclude Include="..\..\0. C++ Code\Logic Game\ownCode\slime.h" />
     <ClInclude Include="..\..\0. C++ Code\Logic Game\ownCode\struct.h" />
     <ClInclude Include="..\..\0. C++ Code\Logic Game\ownCode\Tauler.h" />
+    <ClInclude Include="..\..\0. C++ Code\Logic Game\ownCode\test.h" />
     <ClInclude Include="..\..\0. C++ Code\Logic Game\ownCode\testFigura.h" />
     <ClInclude Include="..\..\0. C++ Code\Logic Game\ownCode\testLlista.h" />
     <ClInclude Include="..\..\0. C++ Code\Logic Game\Partida.h" />

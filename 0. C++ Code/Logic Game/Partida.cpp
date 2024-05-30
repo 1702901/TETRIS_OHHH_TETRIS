@@ -101,7 +101,6 @@ void Partida::inicialitza(int mode)
         cout << "Introdueix el fitxer Moviments: ";
         cin >> fitxerMoviments, cout << endl;
 
-        modeTest(fitxerInicial, fitxerFigures, fitxerMoviments);
 
         break;
     case 2:

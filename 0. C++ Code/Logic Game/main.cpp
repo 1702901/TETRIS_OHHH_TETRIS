@@ -26,16 +26,19 @@
 
 #endif
 
+
+
 #include "./Partida.h"
 #include "./InfoJoc.h"
-
-
+#include "E:\programacion\TETRIS_OHHH_TETRIS\0. C++ Code\Logic Game\ownCode\test.h"
 int main(int argc, const char* argv[])
 {
+    string datos= "data\/Games\/datos.txt";
+    ferLlegirFiguraTest(datos);
     
-
-    tetris();
-    //towerTetris();
+    //tetris();
     return 0;
 }
+
+
 
