@@ -40,13 +40,13 @@ void Joc::novaFigura()
 		posarFigura();
 }
 
-int posCentroAEsquinaY(int pos)
+int static posCentroAEsquinaY(int pos)
 {
 	pos -= 1;
 	return pos;
 }
 
-int posCentroAEsquinaX(int pos, const int tamany, int cuantitatDeGirs)
+int static posCentroAEsquinaX(int pos, const int tamany, int cuantitatDeGirs)
 {
 	if (tamany == 16)
 	{
@@ -366,4 +366,17 @@ void Joc::punts(int nFilesEliminades)
 	}
 
 	puntosPartida += puntos;
+}
+
+void Joc::posarFiguraDeTxt(int tipusFigura, int posY, int posX, int cantidadDeGirosHorarios)
+{
+	m_figura.cambiaFigura(tipusFigura - 1);
+	m_figura.setY(posCentroAEsquinaY(posY));
+	m_figura.setX(posCentroAEsquinaX(posX, m_figura.getTamany(), cantidadDeGirosHorarios));
+	for (int i = 0; i < cantidadDeGirosHorarios; i++)
+		m_figura.girHorari();
+	if (mirarSiHaColisionsFigura())
+		cout << "Has perdut la partida" << endl;
+	else
+		posarFigura();
 }

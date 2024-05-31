@@ -1,7 +1,6 @@
 #include "DiferentsJocs.h"
 #include "JocTower.h"
 
-
 #if defined(WIN32) || defined(_WIN32) || defined(__WIN32__) || defined(__NT__) || defined  (_WIN64)
 
 #include <iostream>
@@ -71,6 +70,29 @@ void mostraTauler(JocTower& jocAMostrar, Screen& pantalla)
 	}
 	pantalla.update();
 
+}
+
+void mostraTestTauler(ModoTest& jocAMostrar, Screen& pantalla)
+{
+	GraphicManager::getInstance()->drawSprite(GRAFIC_FONS, 0, 0, false);
+	GraphicManager::getInstance()->drawSprite(GRAFIC_TAULER, POS_X_TAULER, POS_Y_TAULER, false);
+	for (int fila = 0; fila < FILESTAULER; fila++)
+	{
+		for (int columna = 0; columna < COLUMNESATAULER; columna++)
+		{
+			if (jocAMostrar.getValuePos(fila, columna) != 0)
+			{
+				GraphicManager::getInstance()->drawSprite(IMAGE_NAME(jocAMostrar.getValuePos(fila, columna) + 1),
+					POS_X_TAULER + ((columna + 1) * MIDA_QUADRAT), POS_Y_TAULER + ((fila)*MIDA_QUADRAT), false);
+			}
+
+		}
+	}
+	//poner fila columna en la pantalla
+	int puntos = jocAMostrar.getPuntosPartida();
+	string msg = "Puntos: " + to_string(puntos);
+	GraphicManager::getInstance()->drawFont(FONT_RED_30, 100, POS_Y_TAULER - 50, 1.0, msg);
+	pantalla.update();
 }
 
 void tetris()
@@ -244,7 +266,7 @@ void towerTetris()
 	}
 
 
-void modoTest(const string &fitxerInicial, const string &fitxerFigura, const string &fitxerMoviments)
+void modoTest(const string& fitxerInicial, const string& fitxerFigura, const string& fitxerMoviments)
 {
 
 	//Instruccions necesaries per poder incloure la llibreria i que trobi el main
@@ -262,14 +284,14 @@ void modoTest(const string &fitxerInicial, const string &fitxerFigura, const str
 	double deltaTime = 0;
 
 	ModoTest modoTest;
-	Joc test = modoTest.getJoc();
-	TextInfo modoTestInfo = modoTest.getInfoMod();
+
 	//prepara el modo test
-	modoTest.inicialitzaTabler(fitxerInicial);
+	modoTest.inicialitza(fitxerInicial);
 	modoTest.llegirFitxerFigures(fitxerFigura);
 	modoTest.llegirFitxerMoviments(fitxerMoviments);
 
-	test.mostrarTualer();
+	modoTest.mostrarTualer();
+	mostraTestTauler(modoTest, pantalla);
 	bool fiDePartida = false;
 
 	NOW = SDL_GetPerformanceCounter();
@@ -279,42 +301,57 @@ void modoTest(const string &fitxerInicial, const string &fitxerFigura, const str
 	while (!Keyboard_GetKeyTrg(KEYBOARD_ESCAPE) && !fiDePartida)
 	{
 
+		// inicializamos la figura en el tablero
+		
 		// Captura tots els events de ratolí i teclat de l'ultim cicle
 
 		while (deltaTime < timeToGoDown && !Keyboard_GetKeyTrg(KEYBOARD_ESCAPE))
 		{
 			pantalla.processEvents();
-			int opcion = modoTestInfo.getMoviment()->getValor();
-			switch (opcion)
-			{ 
-				case MOVIMENT_ESQUERRA:
-					test.mouFigura(-1);
-					mostraTauler(test, pantalla);
-					break;
-				case MOVIMENT_DRETA:
-					test.mouFigura(+1);
-					mostraTauler(test, pantalla);
-					break;
-				case MOVIMENT_GIR_HORARI:
-					
-					break;
-				case MOVIMENT_GIR_ANTI_HORARI:
-					break;
-				case MOVIMENT_BAIXA:
-					break;
-				case MOVIMENT_BAIXA_FINAL:
-					break;
-				default:
-					cout << "No existeix cap opció" << endl;
-					break;
+			//inicializamos la figura la proxima figura que toca
+			modoTest.posarFiguraDeTxt();
+			//getMoviment nos da la el moviment y preprara el siguiente movimiento
+			switch (modoTest.getMoviment())
+			{
+			case MOVIMENT_ESQUERRA:
+				modoTest.mouFigura(-1);
+				mostraTestTauler(modoTest, pantalla);
+				break;
+			case MOVIMENT_DRETA:
+				modoTest.mouFigura(+1);
+				mostraTestTauler(modoTest, pantalla);
+				break;
+			case MOVIMENT_GIR_HORARI:
+				modoTest.giraFigura(GIR_HORARI);
+				mostraTestTauler(modoTest, pantalla);
+				break;
+			case MOVIMENT_GIR_ANTI_HORARI:
+				modoTest.giraFigura(GIR_ANTI_HORARI);
+				mostraTestTauler(modoTest, pantalla);
+				break;
+			case MOVIMENT_BAIXA:
+				modoTest.baixaFigura();
+				mostraTestTauler(modoTest, pantalla);
+				break;
+			case MOVIMENT_BAIXA_FINAL:
+				modoTest.hardDrop();
+				mostraTestTauler(modoTest, pantalla);
+				break;
+			default:
+				cout << "No existeix cap opció" << endl;
+				break;
 			}
-			
+
 			NOW = SDL_GetPerformanceCounter();
 			deltaTime = (double)((NOW - LAST) / (double)SDL_GetPerformanceFrequency());
 		}
+
+		//elimina los datos una vea usados
+		
+
 		LAST = NOW;
 		deltaTime = (double)((NOW - LAST) / (double)SDL_GetPerformanceFrequency());
-		mostraTauler(test, pantalla);
+		mostraTestTauler(modoTest, pantalla);
 		// despres de esperar les tecles baixa la figura
 		// comprueba que no se ha perdido la partida
 
@@ -322,4 +359,4 @@ void modoTest(const string &fitxerInicial, const string &fitxerFigura, const str
 		// Actualitza la pantalla
 
 	}
-	
+}

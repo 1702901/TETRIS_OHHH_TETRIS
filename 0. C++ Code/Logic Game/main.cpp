@@ -33,9 +33,12 @@
 #include "E:\programacion\TETRIS_OHHH_TETRIS\0. C++ Code\Logic Game\ownCode\test.h"
 int main(int argc, const char* argv[])
 {
-    string datos= "data\/Games\/datos.txt";
-    ferLlegirFiguraTest(datos);
-    
+    ///*
+    string figuresTxt= "data\/Games\/figures.txt";
+    string fitxerInicial = "data\/Games\/partida.txt";
+    string movimentsTxt = "data\/Games\/moviments.txt";
+    modoTest(fitxerInicial,figuresTxt,movimentsTxt);
+    //*/
     //tetris();
     return 0;
 }

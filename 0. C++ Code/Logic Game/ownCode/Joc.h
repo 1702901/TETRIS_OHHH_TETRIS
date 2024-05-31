@@ -19,6 +19,7 @@ public:
 	bool giraFigura(DireccioGir direccio);
 	void borrarFigura();
 	void posarFigura();
+	void posarFiguraDeTxt(int tipusFigura, int posY, int posX, int cantidadDeGirosHorarios);
 	bool mirarSiHaColisionsFigura();
 	bool mouFigura(int dirX);
 	int baixaFigura();

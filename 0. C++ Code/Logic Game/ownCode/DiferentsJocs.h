@@ -7,6 +7,7 @@ void tetris();
 
 void towerTetris();
 
+void modoTest(const string& fitxerInicial, const string& fitxerFigura, const string& fitxerMoviments);
 
 
 
