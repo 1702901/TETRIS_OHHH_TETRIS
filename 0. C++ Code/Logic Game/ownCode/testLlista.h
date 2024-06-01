@@ -15,19 +15,21 @@ public:
 	int getNMoviment() const { return m_nMoviments; }
 	Node* ultiMoviment() const;
 	NodeFigura* ultimaFigura() const;
-	
+	void nextMov();
+	void reiniciarMov();
+	int getNFiguras() const { return m_nFiguras; }
 
 	void invertirFigura();
 	void invertirMoviment();
 
 
 	NodeFigura* getFigura() const { return m_figuras; };
-	int getNFiguras() const { return m_nFiguras; };
 	void mostraFiguraInfo() const;
 
 
 private:
 	Node* m_moviments;
+	Node* m_firstMov;
 	NodeFigura* m_figuras;
 	int m_nFiguras;
 	int m_nMoviments;

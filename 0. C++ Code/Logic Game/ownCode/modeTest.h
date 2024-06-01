@@ -46,7 +46,8 @@ public:
 	TextInfo getInfoMod() const { return m_infoModTest; };
 	int getMoviment();
 	void posarFiguraDeTxt();
-
+	int getNFiguras() const { return m_infoModTest.getNFiguras(); }
+	void reiniciarMov() {  m_infoModTest.reiniciarMov(); };
 };
 
 #endif

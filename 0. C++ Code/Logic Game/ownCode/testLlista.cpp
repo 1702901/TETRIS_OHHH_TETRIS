@@ -8,9 +8,25 @@ void TextInfo::afegeixMoviment(const int& moviment)
 	aux->setValor(moviment);
 	aux->setNext(m_moviments);
 	m_moviments = aux;
+	m_firstMov = aux;
 	m_nMoviments++;
 }
 
+// avanza en la lista de nodos enlazados
+void TextInfo::nextMov() {
+	if (m_moviments->getNext() != nullptr) {
+		*m_moviments = *m_moviments->getNext();
+	}
+	else {
+		reiniciarMov();
+	}
+}
+
+//per tornar al inici de la lista
+void TextInfo::reiniciarMov()
+{
+	*m_moviments = *m_firstMov;
+}
 
 void TextInfo::afegeixFigura(const int& figura, const int& y, const int& x, const int& nGirsH)
 {
@@ -74,7 +90,7 @@ void TextInfo::eliminaFirstFigura()
 		m_figuras = m_figuras->getNext();
 
 		// Alliberar el primer element(utilitzant l�apuntador auxiliar)
-
+		m_nFiguras--;
 		delete aux;
 	}
 }

@@ -79,28 +79,7 @@ ModoTest::ModoTest()
 	puntosPartida = 0;
 }
 // regenera la figura amb les mateixe coordenades x pero posa la y = 0 per possarla assobre
-void ModoTest::novaFigura()
-{
-	srand((unsigned)time(0));
-	int randomNumber;
-	randomNumber = (rand() % 7);
-	int lenghLine = m_figura.getLenghLine();
-	m_figura.cambiaFigura(randomNumber);
-	m_figura.setY(0);
-	if (m_figura.getX() < 0)
-		m_figura.setX(0);
-	else
-	{
-		// posiciona la figura fins que no es surti del tauler
-		while (m_figura.getLenghLine() + m_figura.getX() > COLUMNESATAULER)
-			m_figura.setX(m_figura.getX() - 1);
-	}
 
-	fiPartida = mirarSiHaColisionsFigura();
-
-	if (!fiPartida)
-		posarFigura();
-}
 
 int posCentroAEsquinaY(int pos)
 {
@@ -167,7 +146,9 @@ void ModoTest::inicialitza(const string& nomFitxer)
 
 void ModoTest::mostrarTualer()
 {
+	
 	cout << m_tauler;
+	cout << endl;
 }
 
 void ModoTest::mostrarFigura()
@@ -274,7 +255,9 @@ bool ModoTest::giraFigura(DireccioGir direccio)
 bool ModoTest::mouFigura(int dirX)
 {
 	bool colisions;
+	mostrarTualer();
 	borrarFigura();
+	mostrarTualer();
 	m_figura.setX(m_figura.getX() + dirX);
 	colisions = mirarSiHaColisionsFigura();
 	if (colisions)
@@ -344,7 +327,6 @@ int ModoTest::baixaFigura()
 		m_figura.setY(m_figura.getY() - 1);
 		posarFigura();
 		filesEliminades = eliminarLineasCompletesBaixada();
-		novaFigura();
 	}
 	// Part on hem de mirar si hem de eliminar una linea o lineas etc
 	else
@@ -365,7 +347,6 @@ int ModoTest::hardDrop()
 	// posa la figura on no fa colisio i fa el procediment vist a baixaFigura
 	posarFigura();
 	filesEliminades = eliminarLineasCompletesBaixada();
-	novaFigura();
 	return filesEliminades;
 }
 
@@ -448,6 +429,6 @@ void ModoTest::posarFiguraDeTxt()
 int ModoTest::getMoviment() 
 {
 	int moviment = m_infoModTest.getMoviment()->getValor();
-	m_infoModTest.eliminaFirstMoviment();
+	m_infoModTest.nextMov();
 	return moviment;
 }

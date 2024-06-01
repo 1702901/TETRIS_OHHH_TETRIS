@@ -157,6 +157,8 @@ void tetris()
 			NOW = SDL_GetPerformanceCounter();
 			deltaTime = (double)((NOW - LAST) / (double)SDL_GetPerformanceFrequency());
 		}
+		tetris.mostrarTualer();
+
 		LAST = NOW;
 		deltaTime = (double)((NOW - LAST) / (double)SDL_GetPerformanceFrequency());
 		tetris.baixaFigura();
@@ -298,65 +300,73 @@ void modoTest(const string& fitxerInicial, const string& fitxerFigura, const str
 	LAST = NOW;
 	double timeToGoDown = 1;
 	deltaTime = (double)((NOW - LAST) / (double)SDL_GetPerformanceFrequency());
-	while (!Keyboard_GetKeyTrg(KEYBOARD_ESCAPE) && !fiDePartida)
-	{
-
+	while (modoTest.getNFiguras() != 0 && !Keyboard_GetKeyTrg(KEYBOARD_ESCAPE)) {
 		// inicializamos la figura en el tablero
-		
-		// Captura tots els events de ratolí i teclat de l'ultim cicle
 
-		while (deltaTime < timeToGoDown && !Keyboard_GetKeyTrg(KEYBOARD_ESCAPE))
+		while (!Keyboard_GetKeyTrg(KEYBOARD_ESCAPE) && modoTest.getNFiguras() != 0)
 		{
-			pantalla.processEvents();
-			//inicializamos la figura la proxima figura que toca
-			modoTest.posarFiguraDeTxt();
-			//getMoviment nos da la el moviment y preprara el siguiente movimiento
-			switch (modoTest.getMoviment())
+
+
+			// Captura tots els events de ratolí i teclat de l'ultim cicle
+
+			while (deltaTime < timeToGoDown && !Keyboard_GetKeyTrg(KEYBOARD_ESCAPE))
 			{
-			case MOVIMENT_ESQUERRA:
-				modoTest.mouFigura(-1);
-				mostraTestTauler(modoTest, pantalla);
-				break;
-			case MOVIMENT_DRETA:
-				modoTest.mouFigura(+1);
-				mostraTestTauler(modoTest, pantalla);
-				break;
-			case MOVIMENT_GIR_HORARI:
-				modoTest.giraFigura(GIR_HORARI);
-				mostraTestTauler(modoTest, pantalla);
-				break;
-			case MOVIMENT_GIR_ANTI_HORARI:
-				modoTest.giraFigura(GIR_ANTI_HORARI);
-				mostraTestTauler(modoTest, pantalla);
-				break;
-			case MOVIMENT_BAIXA:
-				modoTest.baixaFigura();
-				mostraTestTauler(modoTest, pantalla);
-				break;
-			case MOVIMENT_BAIXA_FINAL:
-				modoTest.hardDrop();
-				mostraTestTauler(modoTest, pantalla);
-				break;
-			default:
-				cout << "No existeix cap opció" << endl;
-				break;
+				pantalla.processEvents();
+				//getMoviment nos da la el moviment y preprara el siguiente movimiento
+				switch (modoTest.getMoviment())
+				{
+				case MOVIMENT_ESQUERRA:
+					modoTest.mouFigura(-1);
+					mostraTestTauler(modoTest, pantalla);
+					break;
+				case MOVIMENT_DRETA:
+					modoTest.mouFigura(+1);
+
+					modoTest.mostrarTualer();
+
+					mostraTestTauler(modoTest, pantalla);
+					break;
+				case MOVIMENT_GIR_HORARI:
+					modoTest.giraFigura(GIR_HORARI);
+					mostraTestTauler(modoTest, pantalla);
+					break;
+				case MOVIMENT_GIR_ANTI_HORARI:
+					modoTest.giraFigura(GIR_ANTI_HORARI);
+					mostraTestTauler(modoTest, pantalla);
+					break;
+				case MOVIMENT_BAIXA:
+					modoTest.baixaFigura();
+					mostraTestTauler(modoTest, pantalla);
+					break;
+				case MOVIMENT_BAIXA_FINAL:
+					modoTest.hardDrop();
+					mostraTestTauler(modoTest, pantalla);
+					break;
+				default:
+					cout << "No existeix cap opció" << endl;
+					break;
+				}
+				modoTest.mostrarTualer();
+
+				NOW = SDL_GetPerformanceCounter();
+				deltaTime = (double)((NOW - LAST) / (double)SDL_GetPerformanceFrequency());
 			}
 
-			NOW = SDL_GetPerformanceCounter();
+			modoTest.posarFiguraDeTxt();
+
+			LAST = NOW;
 			deltaTime = (double)((NOW - LAST) / (double)SDL_GetPerformanceFrequency());
+			mostraTestTauler(modoTest, pantalla);
+			// despres de esperar les tecles baixa la figura
+			// comprueba que no se ha perdido la partida
+
+
+			// Actualitza la pantalla
+
 		}
 
-		//elimina los datos una vea usados
-		
-
-		LAST = NOW;
-		deltaTime = (double)((NOW - LAST) / (double)SDL_GetPerformanceFrequency());
-		mostraTestTauler(modoTest, pantalla);
-		// despres de esperar les tecles baixa la figura
-		// comprueba que no se ha perdido la partida
-
-
-		// Actualitza la pantalla
-
 	}
+	
+	SDL_Quit();
+
 }
