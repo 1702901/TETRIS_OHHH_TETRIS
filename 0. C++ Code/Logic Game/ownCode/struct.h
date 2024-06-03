@@ -41,6 +41,8 @@ typedef enum
 {
     TETRISMUSIC = 1,
     BESTIEBOYS = 2,
+    MOZART1 = 3,
+    MOZART2 = 4,
     SORTIRMUSIC = 6
 } MUSICAJOC;
 

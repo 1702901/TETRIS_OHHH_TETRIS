@@ -6,7 +6,7 @@
 class JocTower
 {
 private:
-	Tauler m_tauler;
+	TaulerTower m_tauler;
 	Figuras m_figura;
 	bool fiPartida;
 	Slime slimes[MAX_SLIMES];
