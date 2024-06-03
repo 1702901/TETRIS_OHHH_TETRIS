@@ -50,6 +50,7 @@ int main(int argc, const char* argv[])
     Screen pantalla(SCREEN_SIZE_X, SCREEN_SIZE_Y);
     SDL_SetMainReady();
     SDL_Init(SDL_INIT_VIDEO);
+    PlaySound("../../1. Resources/data/music/Tetris.wav", NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
 
     int selectedOperation = menuPerSeleccionar(pantalla);
     while (selectedOperation != 6 && !Keyboard_GetKeyTrg(KEYBOARD_ESCAPE))
@@ -81,18 +82,8 @@ int main(int argc, const char* argv[])
             break;
         case MUSICA:
             PlaySound(NULL, 0, 0);
-            switch (musicaMenu(pantalla))
-            {
-            case TETRISMUSIC:
-                PlaySound("../../1. Resources/data/music/Tetris.wav", NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
-                break;
-            case BESTIEBOYS:
-                PlaySound("../../1. Resources/data/music/Beastie_Boys_Sabotage.wav", NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
-                break;
-            default:
-                break;
-            }
-
+            musicaMenu(pantalla);
+            
             break;
         default:
             break;

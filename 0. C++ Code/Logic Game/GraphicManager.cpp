@@ -40,7 +40,7 @@ void GraphicManager::drawSprite (IMAGE_NAME name, float posX, float posY, bool c
     }
     
 }
-
+ 
 NFont::Rectf GraphicManager::drawFont (FONT_NAME name,
                                        float posX, float posY,
                                        float size,
@@ -102,6 +102,9 @@ string GraphicManager::getImagePath(IMAGE_NAME name){
         break;
     case GRAFIC_TOWERDEFENSE:
         path = "../../1. Resources/data/Graphics/towerTetris.png";
+        break;
+    case GRAFIC_MAGE:
+        path = "../../1. Resources/data/Graphics/mage.png";
         break;
     default:
         path = "";
