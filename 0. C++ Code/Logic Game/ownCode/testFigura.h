@@ -21,4 +21,3 @@ private:
 	int m_posX;
 	int m_nGirsHoraris;
 };
- 
