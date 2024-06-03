@@ -1,9 +1,4 @@
-//
-//  main.cpp
-//
-//  Copyright � 2018 Compiled Creations Limited. All rights reserved.
-//
-
+ 
 #if defined(WIN32) || defined(_WIN32) || defined(__WIN32__) || defined(__NT__) || defined  (_WIN64)
 
 #include <iostream>
