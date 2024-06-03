@@ -26,16 +26,86 @@
 
 #endif
 
+
+
 #include "./Partida.h"
 #include "./InfoJoc.h"
+#include "./ownCode/test.h"
+
+
+
+#include"ownCode/music.h"
+
 
 
 int main(int argc, const char* argv[])
 {
-    
+    ///*
+    string fitxerInicial = "../../1. Resources/data/Games/partida.txt";
+    string figuresTxt= "../../1. Resources/data/Games/figures.txt";
+    string movimentsTxt = "../../1. Resources/data/Games/moviments.txt";
+    //modoTest(fitxerInicial,figuresTxt,movimentsTxt);
+    //*/
+    //tetris();
+    Screen pantalla(SCREEN_SIZE_X, SCREEN_SIZE_Y);
+    SDL_SetMainReady();
+    SDL_Init(SDL_INIT_VIDEO);
 
-    tetris();
-    //towerTetris();
+    int selectedOperation = menuPerSeleccionar(pantalla);
+    while (selectedOperation != 6 && !Keyboard_GetKeyTrg(KEYBOARD_ESCAPE))
+    {
+        switch (selectedOperation)
+        {
+        case TETRIS:
+            tetris(pantalla);
+            break;
+        case TEST:
+            switch (testMenu(pantalla))
+            {
+            case TEST:
+                getTxtName(fitxerInicial, figuresTxt, movimentsTxt, pantalla);
+                modoTest(fitxerInicial, figuresTxt, movimentsTxt, pantalla);
+                break;
+            case TEST_BASIC:
+                modoTest(fitxerInicial, figuresTxt, movimentsTxt, pantalla);
+                break;
+            default:
+                break;
+            }
+            break;
+        case PUNTIACIONS:
+            mostrarPuntiacions(pantalla);
+            break;
+        case TOWER_TETRIS:
+            towerTetris(pantalla);
+            break;
+        case MUSICA:
+            PlaySound(NULL, 0, 0);
+            switch (musicaMenu(pantalla))
+            {
+            case TETRISMUSIC:
+                PlaySound("../../1. Resources/data/music/Tetris.wav", NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
+                break;
+            case BESTIEBOYS:
+                PlaySound("../../1. Resources/data/music/Beastie_Boys_Sabotage.wav", NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
+                break;
+            default:
+                break;
+            }
+
+            break;
+        default:
+            break;
+        }
+        pantalla.processEvents();
+
+        selectedOperation = menuPerSeleccionar(pantalla);
+    }
+    SDL_Quit();
+  
+ 
     return 0;
 }
+
+
 

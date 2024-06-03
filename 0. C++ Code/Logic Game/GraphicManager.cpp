@@ -68,40 +68,40 @@ string GraphicManager::getImagePath(IMAGE_NAME name){
     string path;
     switch (name) {
     case GRAFIC_FONS:
-        path = "data/Graphics/fons.png";
+        path = "../../1. Resources/data/Graphics/fons.png";
         break;
     case GRAFIC_TAULER:
-        path = "data/Graphics/tauler.png";
+        path = "../../1. Resources/data/Graphics/tauler.png";
         break;
     case GRAFIC_QUADRAT_GROC:
-        path = "data/Graphics/quadrat_groc.png";
+        path = "../../1. Resources/data/Graphics/quadrat_groc.png";
         break;
     case GRAFIC_QUADRAT_BLAUCEL:
-        path = "data/Graphics/quadrat_blaucel.png";
+        path = "../../1. Resources/data/Graphics/quadrat_blaucel.png";
         break;
     case GRAFIC_QUADRAT_MAGENTA:
-        path = "data/Graphics/quadrat_magenta.png";
+        path = "../../1. Resources/data/Graphics/quadrat_magenta.png";
         break;
     case GRAFIC_QUADRAT_TARONJA:
-        path = "data/Graphics/quadrat_taronja.png";
+        path = "../../1. Resources/data/Graphics/quadrat_taronja.png";
         break;
     case GRAFIC_QUADRAT_BLAUFOSC:
-        path = "data/Graphics/quadrat_blaufosc.png";
+        path = "../../1. Resources/data/Graphics/quadrat_blaufosc.png";
         break;
     case GRAFIC_QUADRAT_VERMELL:
-        path = "data/Graphics/quadrat_vermell.png";
+        path = "../../1. Resources/data/Graphics/quadrat_vermell.png";
         break;
     case GRAFIC_QUADRAT_VERD:
-        path = "data/Graphics/quadrat_verd.png";
+        path = "../../1. Resources/data/Graphics/quadrat_verd.png";
         break;
     case GRAFIC_NO_COLOR:
-        path = "data/Graphics/quadrat_no_color.png";
+        path = "../../1. Resources/data/Graphics/quadrat_no_color.png";
         break;
     case GRAFIC_SLIME:
-        path = "data/Graphics/slime.png";
+        path = "../../1. Resources/data/Graphics/slime.png";
         break;
     case GRAFIC_TOWERDEFENSE:
-        path = "data/Graphics/towerTetris.png";
+        path = "../../1. Resources/data/Graphics/towerTetris.png";
         break;
     default:
         path = "";
@@ -119,7 +119,7 @@ string GraphicManager::getFontPath(FONT_NAME name){
         case FONT_GREEN_30:
         case FONT_RED_30:
         case FONT_WHITE_30:
-            path = "data/Fonts/FreeSans.ttf";
+            path = "../../1. Resources/data/Fonts/FreeSans.ttf";
             break;
             
         default:

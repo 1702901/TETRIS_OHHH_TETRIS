@@ -29,7 +29,6 @@ void Partida::actualitza()
     //          (GRAFIC_TAULER, POS_X_TAULER, POS_Y_TAULER, false)
 
 
-    tetris();
     
 
     //TODO 1.3: Dibuixar a pantalla el gràfic amb el tauler i un quadrat groc a la posició (2,3) del tauler
@@ -87,3 +86,6 @@ void Partida::actualitza()
 
 }
 
+ 
+
+ 
