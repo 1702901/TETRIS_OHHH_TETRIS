@@ -380,7 +380,7 @@ void mostraTauler(JocTower& jocAMostrar, Screen& pantalla)
 
 	GraphicManager::getInstance()->drawSprite(GRAFIC_FONS, 0, 0, false);
 	GraphicManager::getInstance()->drawSprite(GRAFIC_TOWERDEFENSE, 0, 0, false);
-	GraphicManager::getInstance()->drawSprite(GRAFIC_MAGE, -100, -50, false);
+	GraphicManager::getInstance()->drawSprite(GRAFIC_MAGE, -100, 0, false);
 
 	for (int fila = 0; fila < COLUMNESATAULER ; fila++)
 	{
@@ -389,7 +389,7 @@ void mostraTauler(JocTower& jocAMostrar, Screen& pantalla)
 			if (jocAMostrar.getValuePos(fila, columna) != 0)
 			{
 				GraphicManager::getInstance()->drawSprite(IMAGE_NAME(jocAMostrar.getValuePos(fila, columna) + 1),
-					 ((columna + 1) * MIDA_QUADRAT),((fila)*MIDA_QUADRAT), false);
+					 ((columna + 1) * MIDA_QUADRAT),((fila)*MIDA_QUADRAT) + 50, false);
 			}
 
 		}
