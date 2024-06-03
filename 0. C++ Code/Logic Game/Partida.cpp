@@ -18,13 +18,13 @@ Partida::Partida()
 
 void Partida::actualitza()
 {
-    //TODO 1: Interactuar amb la crida per dibuixar gràfics (sprites).
-    // 	      Dibuixar a pantalla el fons i el gràfic amb el tauler buit.
+    //TODO 1: Interactuar amb la crida per dibuixar grÃ fics (sprites).
+    // 	      Dibuixar a pantalla el fons i el grÃ fic amb el tauler buit.
     //------------------------------------------------------------------
 
     //TODO 1.1 Afegir l'include de GraphicManager --> #include "GraphicManager.h"
     //TODO 1.2 Fer la crida de dibuixar un sprite --> GraphicManager::getInstance()->drawSprite(image, posX, posY, centered);
-    //	    Per començar podem cridar el drawSprite amb els params --> 
+    //	    Per comenÃ§ar podem cridar el drawSprite amb els params --> 
     //          (GRAFIC_FONS,0,0, false) i 
     //          (GRAFIC_TAULER, POS_X_TAULER, POS_Y_TAULER, false)
 
@@ -32,26 +32,26 @@ void Partida::actualitza()
     tetris();
     
 
-    //TODO 1.3: Dibuixar a pantalla el gràfic amb el tauler i un quadrat groc a la posició (2,3) del tauler
+    //TODO 1.3: Dibuixar a pantalla el grÃ fic amb el tauler i un quadrat groc a la posiciÃ³ (2,3) del tauler
 
 
 
-    //TODO 1.3: Dibuixar a pantalla el gràfic amb el tauler i la figura representada a la matriu m_forma 
-    // a la posició del tauler indicada per m_fila i m_columna
+    //TODO 1.3: Dibuixar a pantalla el grÃ fic amb el tauler i la figura representada a la matriu m_forma 
+    // a la posiciÃ³ del tauler indicada per m_fila i m_columna
 
 
 
     
-    //TODO 2: Interacció amb el teclat
+    //TODO 2: InteracciÃ³ amb el teclat
     //------------------------------------------
     // TODO 2.1: Dibuixar dibuixar per pantalla un quadrat groc a la posicio indicada per m_fila i 
     // m_columna i que es vagi movent cap a la dreta cada cop que es prem la tecla de la fletxa dreta. 
 
 
 
-    // TODO 2.2 Dibuixar a pantalla el gràfic amb el tauler i la figura representada a l’atribut m_forma
-    // a la posició del tauler indicada per m_fila i m_columna. 
-    // Moure la figura cap a la dreta o l’esquerra si es pressionen les tecles de les fletxes corresponents, 
+    // TODO 2.2 Dibuixar a pantalla el grÃ fic amb el tauler i la figura representada a lâ€™atribut m_forma
+    // a la posiciÃ³ del tauler indicada per m_fila i m_columna. 
+    // Moure la figura cap a la dreta o lâ€™esquerra si es pressionen les tecles de les fletxes corresponents, 
     // comprovant que no ens passem dels limits del tauler. 
 
 
@@ -65,7 +65,7 @@ void Partida::actualitza()
     
 
     // TODO 3.2: Dibuixar per pantalla un quadrat groc a la posicio indicada per m_fila i  m_columna.
-    // Moure el quadrat cap a la dreta o l’esquerra si es pressionen les tecles de les fletxes corresponents, 
+    // Moure el quadrat cap a la dreta o lâ€™esquerra si es pressionen les tecles de les fletxes corresponents, 
     // comprovant que no ens passem dels limits del tauler.
     // Fer que cada segon baixi una fila, comprovant que no ens passem del limit inferior del tauler.
 
@@ -73,13 +73,13 @@ void Partida::actualitza()
 
     // TODO 4: Imprimir text per pantalla
     //------------------------------------------
-    // TODO 4.1: Mostrar la posició actual del quadrat a dalt del tauler
+    // TODO 4.1: Mostrar la posiciÃ³ actual del quadrat a dalt del tauler
 
 
 
 
 
-    //TODO 5: Mostrar l’estat inicial del joc amb el tauler i la figura inicialitzats del fitxer        
+    //TODO 5: Mostrar lâ€™estat inicial del joc amb el tauler i la figura inicialitzats del fitxer        
     //-----------------------------------------
  
 
@@ -113,7 +113,7 @@ void Partida::inicialitza(int mode)
         cout << "Saliendo" << endl;
         break;
     default:
-        cout << "Introduce una opción valida" << endl;
+        cout << "Introduce una opciÃ³n valida" << endl;
         break;
     }
 }
@@ -127,3 +127,4 @@ void menu()
     cout << "3. Exit" << endl;
 }
 
+ 

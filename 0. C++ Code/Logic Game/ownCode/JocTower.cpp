@@ -8,8 +8,8 @@ JocTower::JocTower()
 	int randomNumber;
 	randomNumber = (rand() % 7);
 	m_figura.cambiaFigura(randomNumber);
-	m_figura.setX(COLUMNESATAULER / 2);
-	m_figura.setY(FILESTAULER / 2);
+	m_figura.setX(FILESTAULER / 2);
+	m_figura.setY(COLUMNESATAULER / 2);
 	posarFigura();
 	fiPartida = false;
 	vida = MAX_VIDA_MAGO;
@@ -109,7 +109,7 @@ bool JocTower::mirarSiHaColisionsFigura()
 		while (!colisio && columna < m_figura.getY() + m_figura.getLenghLine())
 		{
 			colorDeLaPos = ColorFigura(m_figura.getValuePos(fila - m_figura.getX(), columna - m_figura.getY()));
-			if ((columna >= FILESTAULER || fila >= COLUMNESATAULER) && colorDeLaPos != COLOR_NEGRE)
+			if ((columna >= COLUMNESATAULER || fila >=  FILESTAULER) && colorDeLaPos != COLOR_NEGRE) // changed
 				colisio = true;
 
 			else
@@ -143,7 +143,7 @@ bool JocTower::mirarSiHaColisionsFiguraBaixada()
 		while (!colisio && columna < m_figura.getY() + m_figura.getLenghLine())
 		{
 			colorDeLaPos = ColorFigura(m_figura.getValuePos(fila - m_figura.getX(), columna - m_figura.getY()));
-			if ((columna >= FILESTAULER || fila >= COLUMNESATAULER) && colorDeLaPos != COLOR_NEGRE)
+			if ((columna >= COLUMNESATAULER  || fila >=  FILESTAULER) && colorDeLaPos != COLOR_NEGRE) // changed
 				colisio = true;
 
 			else
@@ -269,7 +269,7 @@ int JocTower::eliminarColumnesCompletesBaixada()
 	{
 		columnaCompleta = true;
 		fila = 0;
-		while (columnaCompleta && fila < FILESTAULER)
+		while (columnaCompleta && fila < COLUMNESATAULER)
 		{
 			if (m_tauler.getPosition(fila, columna) == COLOR_NEGRE)
 				columnaCompleta = false;
@@ -278,9 +278,9 @@ int JocTower::eliminarColumnesCompletesBaixada()
 		if (columnaCompleta)
 		{
 			// eliminem desde l'inici de la figura, totes las columnes posteriors
-			for (int columnaAeliminar = m_figura.getX(); columnaAeliminar < MAX_COL; columnaAeliminar++)
+			for (int columnaAeliminar = m_figura.getX(); columnaAeliminar < FILESTAULER; columnaAeliminar++)//
 			{
-				for (int filaEliminar = 0; filaEliminar < FILESTAULER; filaEliminar++)
+				for (int filaEliminar = 0; filaEliminar < COLUMNESATAULER; filaEliminar++) //
 					// filaEliminar - 1 per cargar el valor de la fila de sobre
 					m_tauler.setPosition(columnaAeliminar, filaEliminar, COLOR_NEGRE);
 				columnesEliminades++;
@@ -289,7 +289,7 @@ int JocTower::eliminarColumnesCompletesBaixada()
 		else
 		{
 			// eliminem la columna on estem posant la figura per donar espai al jugador
-			for (int filaEliminar = 0; filaEliminar < FILESTAULER; filaEliminar++)
+			for (int filaEliminar = 0; filaEliminar < COLUMNESATAULER; filaEliminar++) //
 			{
 				if (m_tauler.getPosition(filaEliminar,columna) != SLIME)
 					m_tauler.setPosition(columna, filaEliminar, COLOR_NEGRE);
@@ -326,6 +326,7 @@ int JocTower::hardDrop()
 {
 	int filesEliminades = 0;
 	// baixa la figura fins que doni colisio
+	baixaFigura();
 	borrarFigura();
 	while (!mirarSiHaColisionsFiguraBaixada())
 	{
@@ -353,10 +354,10 @@ void JocTower::escriuTauler(const string& nomFitxer)
 		string lineaMostrar;
 		int colum = 0;
 		int y;
-		for (int x = 0; x < FILESTAULER; x++)
+		for (int x = 0; x < COLUMNESATAULER; x++)
 		{
 			lineaMostrar = "";
-			for (y = 0; y < COLUMNESATAULER - 1; y++)
+			for (y = 0; y < FILESTAULER - 1; y++)
 				lineaMostrar = lineaMostrar + to_string(m_tauler.getPosition(x, y)) + " ";
 			lineaMostrar = lineaMostrar + to_string(m_tauler.getPosition(x, y));
 			fitxer << lineaMostrar << endl;
@@ -392,7 +393,7 @@ bool JocTower::mirarSiHaColisionsSlime(Slime& slimeAMoure)
 	ColorFigura colorDeLaPos;
 	
 	colorDeLaPos = ColorFigura(slimeAMoure.getValuePos());
-	if ((columna >= FILESTAULER || fila >= COLUMNESATAULER) && colorDeLaPos != COLOR_NEGRE)
+	if ((columna >= COLUMNESATAULER || fila >=  FILESTAULER) && colorDeLaPos != COLOR_NEGRE)
 		colisio = true;
 	else
 	{
@@ -419,7 +420,7 @@ bool JocTower::mouSlime(int dirX, Slime& slimeAMoure)
 		borrarSlime(slimeAMoure);
 		if (slimeAMoure.getX() + dirX < 0)
 		{
-			slimeAMoure.setX(COLUMNESATAULER - 1);
+			slimeAMoure.setX(FILESTAULER - 1);
 			vida--;
 		}
 		else

@@ -31,6 +31,7 @@ typedef enum
     GRAFIC_NO_COLOR,
     GRAFIC_SLIME,
     GRAFIC_TOWERDEFENSE,
+    GRAFIC_MAGE,
     GRAFIC_NUM_MAX
 } IMAGE_NAME;
 
@@ -47,7 +48,6 @@ typedef enum
 class GraphicManager
 {
 public:
-    
     void drawSprite(IMAGE_NAME name, float posX, float posY, bool centered);
     //size: [0-1]
     NFont::Rectf drawFont(FONT_NAME name, float posX,

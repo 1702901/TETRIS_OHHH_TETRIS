@@ -12,7 +12,19 @@ public:
     int getPosition(const int posY, const int posX) const { return int(taulerJoc[posX][posY]) ; };
 };
 
-ostream& operator<<(ostream& out, const Tauler& partida);
 
+class TaulerTower
+{
+private:
+	ColorFigura taulerJoc[FILESTAULER][COLUMNESATAULER];
+	int ordreGirs;
+public:
+	TaulerTower();
+	void setPosition(const int posX, const int posY, const ColorFigura valueColor) { taulerJoc[posX][posY] = valueColor; };
+	int getPosition(const int posY, const int posX) const { return int(taulerJoc[posX][posY]); };
+};
+
+ostream& operator<<(ostream& out, const Tauler& partida);
+ostream& operator<<(ostream& out, const TaulerTower& partida);
 
 #endif

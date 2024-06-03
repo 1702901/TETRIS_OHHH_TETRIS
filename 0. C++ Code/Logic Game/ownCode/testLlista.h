@@ -1,3 +1,4 @@
+
 ﻿#pragma once
 #include "node.h"
 
@@ -15,7 +16,7 @@ public:
 	int getNMoviment() const { return m_nMoviments; }
 	Node* ultiMoviment() const;
 	NodeFigura* ultimaFigura() const;
-	void nextMov();
+	bool nextMov();
 	void reiniciarMov();
 	int getNFiguras() const { return m_nFiguras; }
 
