@@ -447,7 +447,7 @@ void tetris(Screen& pantalla)
 
 		// Captura tots els events de ratolí i teclat de l'ultim cicle
 
-		while (deltaTime < timeToGoDown && !Keyboard_GetKeyTrg(KEYBOARD_ESCAPE))
+		while (deltaTime < timeToGoDown && !Keyboard_GetKeyTrg(KEYBOARD_ESCAPE) && !tetris.getFiPartida())
 		{
 			pantalla.processEvents();
 				// aqui se guarda el valor pulsado 
