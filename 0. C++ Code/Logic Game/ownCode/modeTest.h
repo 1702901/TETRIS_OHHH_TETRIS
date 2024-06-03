@@ -1,32 +1,31 @@
-#ifndef JOC_H
-#define JOC_H
+#ifndef MODETEST_H
+#define MODETEST_H
 #include "Figura.h"
 #include "Tauler.h"
-class Joc
+#include "testLlista.h"
+using namespace std;
+
+class ModoTest
 {
 private:
 	Tauler m_tauler;
 	Figuras m_figura;
 	bool fiPartida;
 	double m_time;
+	int puntosPartida;
 	int m_puntsPartida;
 	float m_timeDown;
-	forward_list<int> m_dataPunts;
-	forward_list<string> m_dataNoms;
+	TextInfo m_infoModTest;
 
 public:
-	Joc();
-	void llegirPuntuacions();
-	void escriuPuntuacions(const string& nomNouJugador);
-	void novaFigura();
+	ModoTest();
 	void inicialitza(const string& nomFitxer);
+	void punts(const int nFilesEliminades);
 	void mostrarTualer();
 	void mostrarFigura();
-	void punts(const int nFilesEliminades);
 	bool giraFigura(DireccioGir direccio);
 	void borrarFigura();
 	void posarFigura();
-	void posarFiguraDeTxt(int tipusFigura, int posY, int posX, int cantidadDeGirosHorarios);
 	bool mirarSiHaColisionsFigura();
 	bool mouFigura(int dirX);
 	int baixaFigura();
@@ -39,7 +38,16 @@ public:
 
 	//funciones para la pantalla y etc
 	void getFiguraPosActual(int& fila, int& columna);
-	int getPuntosPartida()const { return m_puntsPartida; };
+	int getPuntosPartida() const { return m_puntsPartida; };
+
+	//funciones para modo Test
+	void llegirFitxerFigures(const string& nomFitxer);
+	void llegirFitxerMoviments(const string& nomFitxer);
+	TextInfo getInfoMod() const { return m_infoModTest; };
+	int getMoviment();
+	void posarFiguraDeTxt();
+	int getNFiguras() const { return m_infoModTest.getNFiguras(); }
+	void reiniciarMov() {  m_infoModTest.reiniciarMov(); };
 };
 
 #endif
